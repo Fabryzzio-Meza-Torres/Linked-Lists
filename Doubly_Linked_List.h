@@ -83,11 +83,22 @@ temp->prev=nullptr;
     temp->next=node;
     };
     void remove(int pos){
-
-
+    int cont=0;
+    Node<T>* temp=head;
+    while(cont++<pos-1){
+    temp=temp->next;
+    }
+    temp->next=temp->next->next;
+    temp->next->prev=temp;
+    delete temp->next;
     };
     T operator[ ](int){
-
+    int cont=0;
+    Node<T>* temp=head;
+    while(cont++<pos){
+    temp=temp->next;
+    }
+    return temp->data;
     };
     bool empty(){
 if(head!=nullptr && tail !=nullptr){return false;}
