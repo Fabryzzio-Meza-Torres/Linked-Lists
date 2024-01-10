@@ -10,3 +10,4 @@ Implementation of foward list and double linked list
 
 
 ## Segunda parte
+![](segunda.png)
