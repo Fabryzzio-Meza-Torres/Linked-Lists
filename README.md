@@ -5,7 +5,7 @@ Implementation of foward list and double linked list
 - Fernando Alonso Usurin Arias
 - Yoselyn Victoria Miranda Chirinos
 ## Forward List
-![](primera.png)
+![](forward.png)
 
 ## Doubly Linked List
-![](segunda.png)
+![](double.png)
