@@ -9,17 +9,28 @@ struct Node
     Node(T value)
     {
         data = value;
-        next = NULL;
+        next = nullptr;
     }
 };
 
 template <class T>
 class List
 {
+private:
     Node *head;
-    Node *temp;
 
 public:
+    ForwardList() : head(nullptr) {}
+    ~ForwarList()
+    {
+        Node *newNode = head;
+        while (newNode->next != NULL)
+        {
+            Node<T> *temp = newNode;
+            newNode = newNode->next;
+            delete temp;
+        }
+    }
     T front()
     { // Retorna el elemento al comienzo
         if (head != NULL)
@@ -184,7 +195,7 @@ public:
         temp = head;
         while (temp->next != NULL)
         {
-            cout << temp->data << endl;
+            cout << temp->data << " ";
             temp = temp->next;
         }
     }
