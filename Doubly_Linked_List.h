@@ -3,8 +3,8 @@ using namespace std;
 template<class T>
 struct Node{
     T data;
-    Node* next;
-    Node* prev;
+    Node* next=nullptr;
+    Node* prev=nullptr;
 };
 template<class T>
 class List{
@@ -21,15 +21,19 @@ public:
     };
     void push_front(T value){
         Node<T>* temp = new Node<T>{value,head};
+temp->data=value
         if(head == nullptr){
             head = temp;
             tail = temp;
         }else{
-            head = temp;
+            head->prev=temp;
+   temp->next=head;
+   head=temp;
         }
     };
     void push_back(T value){
         Node<T>* temp = new Node<T>{value,nullptr};
+temp->data=value
         if(tail == nullptr){
             tail = temp;
             head = temp;
@@ -40,24 +44,45 @@ public:
         }
     };
     T pop_front(){
-        Node<T> *temp;
-        temp = head;
+if (empty()){
+return;
+}
+else{
+        Node<T> *temp= head;
         head = head->next;
+head->prev=nullptr;
+temp->next=nullptr;
         delete temp;
         return 5;
-
+}
     };
     T pop_back(){
-        Node<T>*temp;
-        temp = tail;
+if (empty()){
+return;
+}
+else{
+        Node<T>*temp=tail;
         tail = tail->prev;
         tail->next = nullptr;
+temp->prev=nullptr;
         delete temp;
         return 5;
+}
     };
-    void insert(T,int){
+    void insert(T value ,int pos){
+    int cont=0;
+    Node<T>* node = new Node<T>;
+    node->data=value;
+    Node<T>* temp=head;
+    while(cont++<pos-1){
+    temp=temp->next;
+    }
+    node->next=temp->next;
+    nodo->prev=temp;
+    temp->next->prev=node;
+    temp->next=node;
     };
-    void remove(int){
+    void remove(int pos){
 
 
     };
@@ -65,9 +90,25 @@ public:
 
     };
     bool empty(){
+if(head!=nullptr && tail !=nullptr){return false;}
+else{return true;}
+    };
+    int size(){
+int cont=0;
+Node<T>* temp;
+        temp = head;
+if (empty()){
+return cont;
+}
+else{
+while(temp->next!=nullptr){
+cont++;
+temp=temp->next;
+}
+return cont;
+}
 
     };
-    int size(){};
     void print() {
         Node<T>* temp;
         temp = head;
@@ -77,4 +118,3 @@ public:
         }
     }
 };
-
