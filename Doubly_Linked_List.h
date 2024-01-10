@@ -92,7 +92,7 @@ temp->prev=nullptr;
     temp->next->prev=temp;
     delete temp->next;
     };
-    T operator[ ](int){
+    T operator[ ](int pos){
     int cont=0;
     Node<T>* temp=head;
     while(cont++<pos){
