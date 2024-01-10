@@ -1,5 +1,5 @@
 # Linked-Lists
-Implementation of forward list and double linked list
+Implementation of forward list and double linked list.
 ## Integrantes
 - Fabryzzio Jossue Meza Torres
 - Fernando Alonso Usurin Arias
