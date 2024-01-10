@@ -71,7 +71,7 @@ public:
     void print() {
         Node<T>* temp;
         temp = head;
-        while (temp->next != nullptr) {
+        while (temp != nullptr) {
             cout << temp->data << " ";
             temp = temp->next;
         }
