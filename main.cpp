@@ -1,5 +1,6 @@
 #include <iostream>
 #include "forward_list.h"
+#include "Doubly_Linked_List.h"
 
 int main()
 {
@@ -34,7 +35,7 @@ int main()
     Listagod.clear();
     Listagod.print();
 
-    //Doubly Linked List
+    // Doubly Linked List
     List<int> prueba;
     prueba.push_front(5);
     prueba.push_front(7);
@@ -50,7 +51,7 @@ int main()
     prueba.pop_front();
     prueba.print();
     cout << endl;
-    prueba.insert(2,1);
+    prueba.insert(2, 1);
     prueba.print();
     cout << endl;
     prueba.remove(1);
@@ -58,7 +59,7 @@ int main()
     cout << endl;
     cout << prueba[1] << endl;
     cout << prueba.empty() << endl;
-    cout <<prueba.size() << endl;
+    cout << prueba.size() << endl;
     prueba.reverse();
     prueba.print();
     prueba.clear();
