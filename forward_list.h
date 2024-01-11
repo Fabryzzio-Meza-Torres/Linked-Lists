@@ -6,6 +6,7 @@ struct Node
 {
     Node *next;
     T data;
+    Node() : next(nullptr) {}
     Node(T value)
     {
         data = value;
@@ -17,14 +18,14 @@ template <class T>
 class ForwardList
 {
 private:
-    Node *head;
+    Node<T> *head;
 
 public:
     ForwardList() : head(nullptr) {}
-    ~ForwarList()
+    ~ForwardList()
     {
-        Node *newNode = head;
-        while (newNode->next != NULL)
+        Node<T> *newNode = head;
+        while (newNode != NULL)
         {
             Node<T> *temp = newNode;
             newNode = newNode->next;
@@ -37,14 +38,14 @@ public:
             return head->data;
         else
         {
-            return;
+            return T();
         }
     }
 
     T back()
     { // Retorna el elemento al final
         Node<T> *temp = head;
-        if (!empty())
+        if (head != NULL)
         {
             while (temp->next != NULL)
             {
@@ -54,13 +55,13 @@ public:
         }
         else
         {
-            return;
+            return T();
         }
     }
 
     void push_front(T value)
     { // Agrega un elemento al comienzo
-        Node<T> *new_Node = new Node<t>(value);
+        Node<T> *new_Node = new Node<T>(value);
         new_Node->next = head;
         head = new_Node;
     }
@@ -68,6 +69,13 @@ public:
     { // Agrega un elemento al final
         Node<T> *new_node = new Node<T>(value);
         Node<T> *temp = head;
+
+        if (head == NULL)
+        {
+            head = new_node;
+            return;
+        }
+
         while (temp->next != NULL)
         {
             temp = temp->next;
@@ -78,40 +86,42 @@ public:
 
     T pop_front()
     { // Remueve el elemento al comienzo
-        if (empty())
+        if (head == NULL)
         {
-            return;
+            return T();
         }
         else
         {
             Node<T> *temp = head;
             head = head->next;
+            return temp->data;
             delete temp;
         }
     }
 
     T pop_back()
     { // Remueve el elemento al final
-        if (empty())
+        if (head == NULL)
         {
-            return;
-            else
-            {
-                Node<T> *temp = head;
-                while (temp->next != NULL)
-                {
-                    temp = temp->next;
-                }
-                delete temp;
-            }
+            return T();
         }
+        else
+        {
+            Node<T> *temp = head;
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            delete temp;
+        }
+        return T();
     }
 
     T operator[](int index)
     { // Retorna el elemento en la posición indicada
-        if (empty())
+        if (head == NULL)
         {
-            return;
+            return T();
         }
         else
         {
@@ -203,10 +213,11 @@ public:
     void print()
     { // Imprime los elementos de la lista
         Node<T> *temp = head;
-        while (temp->next != NULL)
+        while (temp != NULL)
         {
             cout << temp->data << " ";
             temp = temp->next;
         }
+        cout << endl;
     }
 };
