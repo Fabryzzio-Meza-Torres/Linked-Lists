@@ -110,20 +110,20 @@ public:
             return;
         }
         else{
-       while(cont++<pos-1){
-            temp=temp->next;
+            while(cont++<pos){
+                temp=temp->next;
+            }
+            if(temp->next){
+                temp->next->prev = temp->prev;
+            }
+            if(!temp->prev){
+                head = temp->next;
+            }else{
+                temp->prev->next = temp-> next;
+            }
+            delete temp;
         }
-        if(temp->next){
-            temp->next->prev = temp->prev;
-        }
-        if(!temp->prev){
-            head = temp->next;
-        }else{
-            temp->prev->next = temp-> next;
-        }
-        delete temp;
-        }
- 
+
     };
     T operator[ ](int pos){
         int cont=0;
@@ -162,8 +162,6 @@ public:
         }
         tail = NULL;
         head = NULL;
-        cout << "Eliminado";
-
     }
     void reverse(){
         Node<T>* temp;

@@ -33,4 +33,33 @@ int main()
     Listagod.print();
     Listagod.clear();
     Listagod.print();
+
+    //Doubly Linked List
+    List<int> prueba;
+    prueba.push_front(5);
+    prueba.push_front(7);
+    prueba.push_front(16);
+    prueba.push_back(17);
+    prueba.print();
+    cout << endl;
+    cout << prueba.front() << endl;
+    cout << prueba.back() << endl;
+    prueba.pop_back();
+    prueba.print();
+    cout << endl;
+    prueba.pop_front();
+    prueba.print();
+    cout << endl;
+    prueba.insert(2,1);
+    prueba.print();
+    cout << endl;
+    prueba.remove(1);
+    prueba.print();
+    cout << endl;
+    cout << prueba[1] << endl;
+    cout << prueba.empty() << endl;
+    cout <<prueba.size() << endl;
+    prueba.reverse();
+    prueba.print();
+    prueba.clear();
 }
