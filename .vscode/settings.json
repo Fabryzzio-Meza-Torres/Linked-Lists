@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.tcc": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "ostream": "cpp"
     }
 }
