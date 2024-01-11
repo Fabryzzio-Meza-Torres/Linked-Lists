@@ -109,11 +109,21 @@ public:
             cout<<"Posicion no valida"<<endl;
             return;
         }
-        while(cont++<pos-1){
+        else{
+       while(cont++<pos-1){
             temp=temp->next;
         }
-        temp->next=temp->next->next;
-        temp->next->prev=temp;
+        if(temp->next){
+            temp->next->prev = temp->prev;
+        }
+        if(!temp->prev){
+            head = temp->next;
+        }else{
+            temp->prev->next = temp-> next;
+        }
+        delete temp;
+        }
+ 
     };
     T operator[ ](int pos){
         int cont=0;
