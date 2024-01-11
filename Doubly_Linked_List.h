@@ -74,6 +74,18 @@ public:
         Node<T>* node = new Node<T>;
         node->data=value;
         Node<T>* temp=head;
+        if(pos==0){
+            push_front(value);
+            return;
+        }
+        else if(pos==size()){
+            push_back(value);
+            return;
+        }
+        else if(pos>size()){
+            cout<<"Posicion no valida"<<endl;
+            return;
+        }
         while(cont++<pos-1){
             temp=temp->next;
         }
@@ -85,18 +97,23 @@ public:
     void remove(int pos){
         int cont=0;
         Node<T>* temp=head;
+        if(pos==0){
+            pop_front();
+            return;
+        }
+        else if(pos==size()-1){
+            pop_back();
+            return;
+        }
+        else if(pos>size()){
+            cout<<"Posicion no valida"<<endl;
+            return;
+        }
         while(cont++<pos-1){
             temp=temp->next;
         }
-        if(temp->next){
-            temp->next->prev = temp->prev;
-        }
-        if(!temp->prev){
-            head = temp->next;
-        }else{
-            temp->prev->next = temp-> next;
-        }
-        delete temp;
+        temp->next=temp->next->next;
+        temp->next->prev=temp;
     };
     T operator[ ](int pos){
         int cont=0;
