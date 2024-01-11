@@ -14,7 +14,7 @@ struct Node
 };
 
 template <class T>
-class List
+class ForwardList
 {
 private:
     Node *head;
@@ -43,6 +43,7 @@ public:
 
     T back()
     { // Retorna el elemento al final
+        Node<T> *temp = head;
         if (!empty())
         {
             while (temp->next != NULL)
@@ -56,22 +57,22 @@ public:
             return;
         }
     }
+
     void push_front(T value)
     { // Agrega un elemento al comienzo
-        Node *new_Node = new Node;
-        Node->data = value;
+        Node<T> *new_Node = new Node<t>(value);
         new_Node->next = head;
         head = new_Node;
     }
     void push_back(T value)
     { // Agrega un elemento al final
-        Node *new_node = new Node;
+        Node<T> *new_node = new Node<T>(value);
+        Node<T> *temp = head;
         while (temp->next != NULL)
         {
             temp = temp->next;
         }
         temp->next = new_node;
-        new_node->data = value;
         new_node->next = NULL;
     }
 
@@ -83,7 +84,7 @@ public:
         }
         else
         {
-            temp = head;
+            Node<T> *temp = head;
             head = head->next;
             delete temp;
         }
@@ -96,6 +97,7 @@ public:
             return;
             else
             {
+                Node<T> *temp = head;
                 while (temp->next != NULL)
                 {
                     temp = temp->next;
@@ -104,6 +106,7 @@ public:
             }
         }
     }
+
     T operator[](int index)
     { // Retorna el elemento en la posición indicada
         if (empty())
@@ -112,6 +115,7 @@ public:
         }
         else
         {
+            Node<T> *temp = head;
             int counter = 0;
             while (temp->next != NULL)
             {
@@ -127,6 +131,7 @@ public:
             }
         }
     }
+
     bool empty()
     { // Retorna si la lista está vacía o no
         if (head == NULL)
@@ -142,6 +147,7 @@ public:
     int size()
     { // Retorna el tamaño de la lista
         int counter = 0;
+        Node<T> *temp = head;
         while (temp->next != NULL)
         {
             counter++;
@@ -149,19 +155,21 @@ public:
         }
         return counter;
     }
+
     void clear()
     { // Elimina todos los elementos de la lista
-        temp = head;
+        Node<T> *temp = head;
         while (temp->next != NULL)
         {
-            delete temp;
+            Node<T> *temp2 = temp;
             temp = temp->next;
+            delete temp2;
         }
     }
     void sort()
     { // Implemente un algoritmo de ordenacion con listas enlazadas)
-        temp = head;
-        Node *temp2 = temp->next;
+        Node<T> *temp = head;
+        Node<T> *temp2 = temp->next;
         while (temp->next != NULL)
         {
             temp2 = temp->next;
@@ -180,19 +188,21 @@ public:
     }
     void reverse()
     { // Revierte la lista
-        Node *prev = NULL;
+        Node<T> *prev = NULL;
+        Node<T> *temp = head;
         while (temp->next != NULL)
         {
-            next = temp->next;
+            Node<T> *next = temp->next;
             temp->next = prev;
             prev = temp;
             temp = next;
         }
         head = prev;
     }
+
     void print()
     { // Imprime los elementos de la lista
-        temp = head;
+        Node<T> *temp = head;
         while (temp->next != NULL)
         {
             cout << temp->data << " ";
