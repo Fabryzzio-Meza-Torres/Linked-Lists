@@ -21,19 +21,19 @@ public:
     };
     void push_front(T value){
         Node<T>* temp = new Node<T>{value,head};
-temp->data=value
+        temp->data=value;
         if(head == nullptr){
             head = temp;
             tail = temp;
         }else{
             head->prev=temp;
-   temp->next=head;
-   head=temp;
+            temp->next=head;
+            head=temp;
         }
     };
     void push_back(T value){
         Node<T>* temp = new Node<T>{value,nullptr};
-temp->data=value
+        temp->data=value;
         if(tail == nullptr){
             tail = temp;
             head = temp;
@@ -44,82 +44,106 @@ temp->data=value
         }
     };
     T pop_front(){
-if (empty()){
-return;
-}
-else{
-        Node<T> *temp= head;
-        head = head->next;
-head->prev=nullptr;
-temp->next=nullptr;
-        delete temp;
-        return 5;
-}
+        if (empty()){
+            return 0;
+        }
+        else{
+            Node<T> *temp= head;
+            head = head->next;
+            head->prev=nullptr;
+            temp->next=nullptr;
+            delete temp;
+            return 0;
+        }
     };
     T pop_back(){
-if (empty()){
-return;
-}
-else{
-        Node<T>*temp=tail;
-        tail = tail->prev;
-        tail->next = nullptr;
-temp->prev=nullptr;
-        delete temp;
-        return 5;
-}
+        if (empty()){
+            return 0;
+        }
+        else{
+            Node<T>*temp=tail;
+            tail = tail->prev;
+            tail->next = nullptr;
+            temp->prev=nullptr;
+            delete temp;
+            return 0;
+        }
     };
     void insert(T value ,int pos){
-    int cont=0;
-    Node<T>* node = new Node<T>;
-    node->data=value;
-    Node<T>* temp=head;
-    while(cont++<pos-1){
-    temp=temp->next;
-    }
-    node->next=temp->next;
-    nodo->prev=temp;
-    temp->next->prev=node;
-    temp->next=node;
+        int cont=0;
+        Node<T>* node = new Node<T>;
+        node->data=value;
+        Node<T>* temp=head;
+        while(cont++<pos-1){
+            temp=temp->next;
+        }
+        node->next=temp->next;
+        node->prev=temp;
+        temp->next->prev=node;
+        temp->next=node;
     };
     void remove(int pos){
-    int cont=0;
-    Node<T>* temp=head;
-    while(cont++<pos-1){
-    temp=temp->next;
-    }
-    temp->next=temp->next->next;
-    temp->next->prev=temp;
-    delete temp->next;
+        int cont=0;
+        Node<T>* temp=head;
+        while(cont++<pos-1){
+            temp=temp->next;
+        }
+        temp->next=temp->next->next;
+        temp->next->prev=temp;
+        delete temp->next;
     };
     T operator[ ](int pos){
-    int cont=0;
-    Node<T>* temp=head;
-    while(cont++<pos){
-    temp=temp->next;
-    }
-    return temp->data;
+        int cont=0;
+        Node<T>* temp=head;
+        while(cont++<pos){
+            temp=temp->next;
+        }
+        return temp->data;
     };
     bool empty(){
-if(head!=nullptr && tail !=nullptr){return false;}
-else{return true;}
+        if(head!=nullptr && tail !=nullptr){return false;}
+        else{return true;}
     };
     int size(){
-int cont=0;
-Node<T>* temp;
+        int cont=0;
+        Node<T>* temp;
         temp = head;
-if (empty()){
-return cont;
-}
-else{
-while(temp->next!=nullptr){
-cont++;
-temp=temp->next;
-}
-return cont;
-}
+        if (empty()){
+            return cont;
+        }
+        else{
+            while(temp !=nullptr){
+                cont++;
+                temp=temp->next;
+            }
+            return cont;
+        }
 
     };
+    void clear(){
+        Node<T>* temp;
+        while(tail != NULL){
+            temp = tail;
+            tail = tail->prev;
+            delete temp;
+        }
+        tail = NULL;
+        head = NULL;
+        cout << "Eliminado";
+
+    }
+    void reverse(){
+        Node<T>* temp;
+        Node<T>* temp1 = tail->next;
+        head = tail;
+        temp = tail;
+        while(temp != NULL){
+            temp->next = tail->prev;
+            temp->prev = temp1;
+            temp = temp->next;
+        }
+
+    }
     void print() {
         Node<T>* temp;
         temp = head;
