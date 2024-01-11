@@ -81,11 +81,12 @@ public:
         else
         {
             NodeDouble<T> *temp = tail;
+            T data = temp->data;
             tail = tail->prev;
             tail->next = nullptr;
             temp->prev = nullptr;
             delete temp;
-            return 0;
+            return data;
         }
     };
     void insert(T value, int pos)
