@@ -102,6 +102,7 @@ public:
             head = head->next;
             T data = temp->data;
             delete temp;
+            cout << data << endl;
             return data;
         }
     }
@@ -117,6 +118,7 @@ public:
             T data = head->data;
             delete head;
             head = NULL;
+            cout << data << endl;
             return data;
         }
 
@@ -132,6 +134,7 @@ public:
             T data = temp->data;
             delete temp;
             temp2->next = NULL;
+            cout << data << endl;
             return data;
         }
     }
