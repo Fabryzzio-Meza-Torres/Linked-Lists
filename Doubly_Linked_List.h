@@ -1,16 +1,16 @@
 #include <iostream>
 using namespace std;
 template<class T>
-struct Node{
+struct NodeDouble {
     T data;
-    Node* next=nullptr;
-    Node* prev=nullptr;
+    NodeDouble * next=nullptr;
+    NodeDouble * prev=nullptr;
 };
 template<class T>
 class List{
 private:
-    Node<T>* head;
-    Node<T>* tail;
+    NodeDouble <T>* head;
+    NodeDouble <T>* tail;
 public:
     List(): head(nullptr), tail(nullptr){}
     T front(){
@@ -20,7 +20,7 @@ public:
         return tail->data;
     };
     void push_front(T value){
-        Node<T>* temp = new Node<T>{value,head};
+        NodeDouble <T>* temp = new NodeDouble <T>{value,head};
         temp->data=value;
         if(head == nullptr){
             head = temp;
@@ -32,7 +32,7 @@ public:
         }
     };
     void push_back(T value){
-        Node<T>* temp = new Node<T>{value,nullptr};
+        NodeDouble <T>* temp = new NodeDouble <T>{value,nullptr};
         temp->data=value;
         if(tail == nullptr){
             tail = temp;
@@ -48,7 +48,7 @@ public:
             return 0;
         }
         else{
-            Node<T> *temp= head;
+            NodeDouble <T> *temp= head;
             head = head->next;
             head->prev=nullptr;
             temp->next=nullptr;
@@ -61,7 +61,7 @@ public:
             return 0;
         }
         else{
-            Node<T>*temp=tail;
+            NodeDouble <T>*temp=tail;
             tail = tail->prev;
             tail->next = nullptr;
             temp->prev=nullptr;
@@ -71,9 +71,9 @@ public:
     };
     void insert(T value ,int pos){
         int cont=0;
-        Node<T>* node = new Node<T>;
+        NodeDouble <T>* node = new NodeDouble <T>;
         node->data=value;
-        Node<T>* temp=head;
+        NodeDouble <T>* temp=head;
         if(pos==0){
             push_front(value);
             return;
@@ -96,7 +96,7 @@ public:
     };
     void remove(int pos){
         int cont=0;
-        Node<T>* temp=head;
+        NodeDouble <T>* temp=head;
         if(pos==0){
             pop_front();
             return;
@@ -127,7 +127,7 @@ public:
     };
     T operator[ ](int pos){
         int cont=0;
-        Node<T>* temp=head;
+        NodeDouble <T>* temp=head;
         while(cont++<pos){
             temp=temp->next;
         }
@@ -139,7 +139,7 @@ public:
     };
     int size(){
         int cont=0;
-        Node<T>* temp;
+        NodeDouble <T>* temp;
         temp = head;
         if (empty()){
             return cont;
@@ -154,7 +154,7 @@ public:
 
     };
     void clear(){
-        Node<T>* temp;
+        NodeDouble <T>* temp;
         while(tail != NULL){
             temp = tail;
             tail = tail->prev;
@@ -164,8 +164,8 @@ public:
         head = NULL;
     }
     void reverse(){
-        Node<T>* temp;
-        Node<T>* temp1 = tail->next;
+        NodeDouble <T>* temp;
+        NodeDouble <T>* temp1 = tail->next;
         head = tail;
         temp = tail;
         while(temp != NULL){
@@ -176,8 +176,10 @@ public:
 
     }
     void print() {
-        Node<T>* temp;
+        NodeDouble <T>* temp;
         temp = head;
+        if(head ==NULL){
+            cout<<"Lista vacia"<<endl;}
         while (temp != nullptr) {
             cout << temp->data << " ";
             temp = temp->next;
