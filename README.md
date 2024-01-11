@@ -1,6 +1,6 @@
 # Linked-Lists
 Implementation of forward list and double linked list.
-## Colaboradores
+## Collaborators
 - Fabryzzio Jossue Meza Torres
 - Fernando Alonso Usurin Arias
 - Yoselyn Victoria Miranda Chirinos
