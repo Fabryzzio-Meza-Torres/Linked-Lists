@@ -1,3 +1,5 @@
+#ifndef DOUBLY_LINKED_LIST_H
+#define DOUBLY_LINKED_LIST_H
 #include <iostream>
 using namespace std;
 template <class T>
@@ -8,14 +10,14 @@ struct NodeDouble
     NodeDouble *prev = nullptr;
 };
 template <class T>
-class List
+class DoublyLinkedList
 {
 private:
     NodeDouble<T> *head;
     NodeDouble<T> *tail;
 
 public:
-    List() : head(nullptr), tail(nullptr) {}
+    DoublyLinkedList() : head(nullptr), tail(nullptr) {}
     T front()
     {
         return head->data;
@@ -42,7 +44,7 @@ public:
     };
     void push_back(T value)
     {
-        NodeDouble<T> *temp = new NodeDouble<T>{value, nullptr};
+        NodeDouble<T> *temp = new NodeDouble<T>{value, nullptr, nullptr};
         temp->data = value;
         if (tail == nullptr)
         {
@@ -239,4 +241,49 @@ public:
         }
         cout << endl;
     }
+
+    class iterator
+    {
+        NodeDouble<T> *current_node;
+
+    public:
+        iterator(NodeDouble<T> *node) : current_node(node) {}
+        iterator operator++()
+        {
+            current_node = current_node->next;
+            return *this;
+        }
+
+        bool operator==(const iterator &other) const
+        {
+            return current_node == other.current_node;
+        }
+
+        iterator operator--()
+        {
+            current_node = current_node->prev;
+            return *this;
+        }
+        bool operator!=(const iterator &other) const
+        {
+            return !(*this == other);
+        }
+
+        T &operator*() const
+        {
+            return current_node->data;
+        }
+    };
+
+    iterator begin()
+    {
+        return iterator(head);
+    }
+
+    iterator end()
+    {
+        return iterator(nullptr);
+    }
 };
+
+#endif // DOUBLY_LINKED_LIST_H

@@ -38,7 +38,7 @@ int main()
 
     // Doubly Linked List
     cout << "Doubly Linked List tests:" << endl;
-    List<int> prueba;
+    DoublyLinkedList<int> prueba;
     prueba.push_front(5);
     prueba.push_front(7);
     prueba.push_front(16);
